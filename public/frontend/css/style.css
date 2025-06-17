@@ -1,0 +1,232 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+/* utilities */
+* {
+  font-family: dm sans;
+}
+
+body {
+  background-color: #263238 !important;
+}
+
+.navbar-brand {
+  font-weight: 600;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  margin-right: 20px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* bagi ruang jadi atas (teks) dan bawah (footer) */
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.hero-text .content {
+  margin-top: auto;
+  margin-bottom: auto;
+  /* center secara vertikal */
+}
+
+.hero-text h1 {
+  font-size: 100px;
+}
+
+.product {
+  margin-top: 100px;
+  color: whitesmoke;
+}
+
+.product h1 {
+  color: whitesmoke;
+}
+
+.product .item img {
+  width: 100%;
+}
+
+.product .item {
+  position: relative;
+  overflow: hidden;
+}
+
+.product .item figcaption {
+  position: absolute;
+  bottom: -3rem;
+  background-color: rgba(0, 0, 0, 0.76);
+  padding: 1rem 0;
+  width: 100%;
+  text-align: center;
+  transition: all 200ms;
+}
+
+.product .item:hover figcaption {
+  bottom: 0;
+}
+
+.game {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+.detail {
+  margin-top: 100px;
+  color: whitesmoke;
+}
+
+.bg-detail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../assets/img-detail1.jpg);
+  /* Ganti dengan path gambar Anda */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  /* Letakkan di belakang konten lain */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+  /* Gradasi overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  /* Warna teks di atas overlay */
+  text-align: center;
+}
+
+.detail .card {
+  background-color: #26323824;
+  backdrop-filter: blur(50px);
+}
+
+.detail .card .btn {
+  color: white;
+  width: 100%;
+}
+
+.detail .card .btn:hover {
+  color: grey;
+  width: 100%;
+}
+
+.navbar .btn-offcanvas {
+  margin-left: 20px;
+}
+
+.payment {
+  margin-top: 100px;
+  color: whitesmoke;
+}
+
+.success {
+  margin-top: 100px;
+  color: whitesmoke;
+}
+
+.bg-success {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../assets/img-success.jpg);
+  /* Ganti dengan path gambar Anda */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  /* Letakkan di belakang konten lain */
+}
+
+.login {
+  margin-top: 100px;
+  color: white;
+}
+
+.bg-login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../assets/img-login.jpg);
+  /* Ganti dengan path gambar Anda */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  /* Letakkan di belakang konten lain */
+}
+
+.register {
+  margin-top: 100px;
+  color: white;
+}
+
+.bg-register {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../assets/img-register.jpg);
+  /* Ganti dengan path gambar Anda */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  /* Letakkan di belakang konten lain */
+}
+
+.transaksi {
+  margin-top: 100px;
+  color: white;
+}
