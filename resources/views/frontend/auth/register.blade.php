@@ -38,7 +38,7 @@
                     <div class="row mt-5">
                         <div class="col">
                             <h5>Sudah punya Akun?</h5>
-                            <a href="./login.html" class="btn btn-secondary w-100">Masuk</a>
+                            <a href="{{ route('login') }}" class="btn btn-secondary w-100">Masuk</a>
                         </div>
                     </div>
                 </div>

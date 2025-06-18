@@ -6,7 +6,7 @@
         <div class="hero-text">
             <div class="content">
                 <h1>Top Up Game jadi <i><b>EASY!</b></i></h1>
-                <a class="btn btn-outline-light" href="./game.html">Belanja Sekarang</a>
+                <a class="btn btn-outline-light" href="{{ route('frontend.products.index') }}">Belanja Sekarang</a>
             </div>
             <footer>Copyright &copy; Tokin Under Sydemy | Video Source : Mobile Legends</footer>
         </div>

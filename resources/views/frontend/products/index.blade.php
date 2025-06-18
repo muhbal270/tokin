@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <a class="game" href="./detail.html">
+            <a class="game" href="{{ route('frontend.orders.index') }}">
                 <div class="row mt-3">
                     <div class="col-lg-4">
                         <figure class="item">

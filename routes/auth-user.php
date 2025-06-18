@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\Frontend\Auth\AuthController;
-use App\Http\Controllers\Frontend\GameController;
-use App\Http\Controllers\Frontend\OrderController;
+
 use Illuminate\Support\Facades\Route;
 
+Route::middleware('guest')->group(function () {
+// Route inin hanya bisa diakses oleh pengguna yang belum login
+// jika pengguna sudah login, maka akan diarahkan ke halaman login atau halaman lain yang ditentukan
 Route::get('/login', [AuthController::class, 'index'])
-    ->name('frontend.auth.login');
+    ->name('login');
 
 Route::get('/register', [AuthController::class, 'register'])
-    ->name('frontend.auth.register');
+    ->name('register');
+});
+

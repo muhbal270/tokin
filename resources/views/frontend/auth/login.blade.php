@@ -11,7 +11,7 @@
                 <div class="col-lg-6">
                     <div class="content">
                         <h1>Masuk ke Tokin</h1>
-                        <form action="">
+                        <form action="{{ route('login') }}">
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Alamat Email</label>
@@ -27,7 +27,7 @@
                     <div class="row mt-5">
                         <div class="col">
                             <h5>Belum punya Akun?</h5>
-                            <a href="./register.html" class="btn btn-secondary w-100">Buat Akun</a>
+                            <a href="{{ route('register') }}" class="btn btn-secondary w-100">Buat Akun</a>
                         </div>
                     </div>
                 </div>
