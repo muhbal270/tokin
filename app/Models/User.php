@@ -18,7 +18,9 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        // $fillable adalah proteksi hanya field ini yang boleh diisi langsung saat membuat user
         'name',
+        'phone',
         'email',
         'password',
     ];

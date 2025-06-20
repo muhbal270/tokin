@@ -11,26 +11,52 @@
                 <div class="col-lg-6">
                     <div class="content">
                         <h1>Buat Akun</h1>
-                        <form action="">
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="Aria Jhon">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="floatingInput" placeholder="Aria Jhon">
                                 <label for="floatingInput">Nama Lengkap</label>
+                                @error('name')
+                                    <div class="text-danger text-start">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="08123456789">
+                                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="floatingInput" placeholder="08123456789">
                                 <label for="floatingInput">Nomor Whatsapp</label>
+                                @error('phone')
+                                    <div class="text-danger text-start">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Alamat Email</label>
+                                @error('email')
+                                    <div class="text-danger text-start">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Buat Password</label>
+                                @error('password')
+                                    <div class="text-danger text-start">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Konfirmasi Password</label>
+                                @error('password')
+                                    <div class="text-danger text-start">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <button type="submit" class="btn btn-light w-100 mt-3 mb-5">Daftar</button>
                         </form>
