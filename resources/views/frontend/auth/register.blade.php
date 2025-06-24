@@ -14,7 +14,7 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="floatingInput" placeholder="Aria Jhon">
+                                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" id="floatingInput" placeholder="Aria Jhon">
                                 <label for="floatingInput">Nama Lengkap</label>
                                 @error('name')
                                     <div class="text-danger text-start">
@@ -23,7 +23,7 @@
                                 @enderror
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="floatingInput" placeholder="08123456789">
+                                <input type="text" name="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" id="floatingInput" placeholder="08123456789">
                                 <label for="floatingInput">Nomor Whatsapp</label>
                                 @error('phone')
                                     <div class="text-danger text-start">
@@ -32,7 +32,7 @@
                                 @enderror
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com">
+                                <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com">
                                 <label for="floatingInput">Alamat Email</label>
                                 @error('email')
                                     <div class="text-danger text-start">
@@ -41,7 +41,7 @@
                                 @enderror
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" placeholder="Password">
+                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Buat Password</label>
                                 @error('password')
                                     <div class="text-danger text-start">
@@ -50,7 +50,7 @@
                                 @enderror
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" placeholder="Password">
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Konfirmasi Password</label>
                                 @error('password')
                                     <div class="text-danger text-start">
