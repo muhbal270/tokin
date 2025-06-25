@@ -54,7 +54,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item  ">
-                        <a href="component-accordion.html" class="submenu-link">Unknown</a>
+                        <a href="{{ route('backend.product.index') }}" class="submenu-link">Product</a>
                     </li>
                 </ul>
             </li>

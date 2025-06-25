@@ -1,4 +1,4 @@
-@include ('backend.layouts.app', ['title' => 'Dashboard Page'])
+@extends ('backend.layouts.app', ['title' => 'Dashboard Page'])
 
 @section('content')
 
