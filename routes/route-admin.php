@@ -16,4 +16,19 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/product', [ProductController::class, 'index'])
         ->name('backend.product.index');
 
+    Route::get('/admin/product/create', [ProductController::class, 'create'])
+        ->name('backend.product.create');
+
+    Route::post('/admin/product/store', [ProductController::class, 'store'])
+        ->name('backend.product.store');
+
+    Route::get('/admin/product/edit/{product}', [ProductController::class, 'edit'])
+        ->name('backend.product.edit');
+
+    Route::put('/admin/product/update/{product}', [ProductController::class, 'update'])
+        ->name('backend.product.update');
+
+    Route::delete('/admin/product/delete/{product}', [ProductController::class, 'destroy'])
+        ->name('backend.product.delete');
+
 });

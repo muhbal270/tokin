@@ -13,28 +13,22 @@
                 </div>
             </div>
 
-            <a class="game" href="{{ route('frontend.orders.index') }}">
-                <div class="row mt-3">
+            <div class="row mt-3">
+                @forelse ($products as $item)
                     <div class="col-lg-4">
-                        <figure class="item">
-                            <img src="./assets/img1.png" alt="">
-                            <figcaption>Mobile Legends</figcaption>
-                        </figure>
+                        <a href="{{ route('frontend.orders.index') }}">
+                            <figure class="item">
+                                <img style="max-height: 200px; object-fit: cover;" src="{{ asset('storage/products/' . $item->image) }}" alt="{{ $item->title }}">
+                                <figcaption class="text-white">{{ $item->title }}</figcaption>
+                            </figure>
+                        </a>
                     </div>
-                    <div class="col-lg-4">
-                        <figure class="item">
-                            <img src="./assets/img2.png" alt="">
-                            <figcaption>EAFC 25</figcaption>
-                        </figure>
+                @empty
+                    <div class="col-12 text-center">
+                        Belum ada produk yang tersedia.
                     </div>
-                    <div class="col-lg-4">
-                        <figure class="item">
-                            <img src="./assets/img3.png" alt="">
-                            <figcaption>PUBG Mobile</figcaption>
-                        </figure>
-                    </div>
-                </div>
-            </a>
+                @endforelse
+            </div>
         </div>
     </div>
 

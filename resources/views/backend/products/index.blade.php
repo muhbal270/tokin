@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-header">
                 <button class="btn btn-primary">
-                    <a href="" class="text-white">Create Data</a>
+                    <a href="{{ route('backend.product.create') }}" class="text-white">Create Data</a>
                 </button>
             </div>
             <div class="card-body">
@@ -31,11 +31,13 @@
                         @forelse ($products as $item)
                         <tr>
                             <td>{{ $products->firstItem() + $loop->index }}</td>
-                            <td>{{ $item->image }}</td>
+                            <td><img src="{{ asset('storage/products/' . $item->image) }}" alt="{{  $item->title }}" width="80"></td>
                             <td>{{ $item->title }}</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i> Edit</a>
-                                <form action="" style="display: inline;">
+                                <a href="{{ route('backend.product.edit', $item->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i> Edit</a>
+                                <form action="{{ route('backend.product.delete', $item->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
                                     <button onclick="return confirm('Yakin ingin hapus data ini ?')" class="btn btn-sm btn-danger">
                                         <i class="bi bi-trash"></i> Delete
                                     </button>
