@@ -16,7 +16,7 @@
             <div class="row mt-3">
                 @forelse ($products as $item)
                     <div class="col-lg-4">
-                        <a href="{{ route('frontend.orders.index') }}">
+                        <a href="{{ route('frontend.orders.index') }}?slug={{ $item->slug }}" title="{{ $item->title }}">
                             <figure class="item">
                                 <img style="max-height: 200px; object-fit: cover;" src="{{ asset('storage/products/' . $item->image) }}" alt="{{ $item->title }}">
                                 <figcaption class="text-white">{{ $item->title }}</figcaption>

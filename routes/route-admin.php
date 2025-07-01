@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Backend\ProductController;
 use League\Uri\UriTemplate\Template;
+use App\Http\Controllers\Backend\BankController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\TemplateController;
 use App\Http\Controllers\Backend\DashboardController;
 
@@ -30,5 +31,15 @@ Route::middleware(['admin'])->group(function () {
 
     Route::delete('/admin/product/delete/{product}', [ProductController::class, 'destroy'])
         ->name('backend.product.delete');
+
+    // Route untuk halaman bank
+    Route::get('/admin/bank', [BankController::class, 'index'])
+        ->name('backend.bank.index');
+
+    Route::get('/admin/bank/create', [BankController::class, 'create'])
+        ->name('backend.bank.create');
+
+    Route::post('/admin/bank/store', [BankController::class, 'store'])
+        ->name('backend.bank.store');
 
 });

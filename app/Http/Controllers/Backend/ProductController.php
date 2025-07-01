@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -49,6 +50,7 @@ class ProductController extends Controller
         Product::create([
             'image' => $image_name, // simpan nama file gambar
             'title' => $request->title, // simpan judul produk
+            'slug' => Str::slug($request->title), // membuat slug dari judul produk
         ]);
 
         // menampilkan pesan sukses
@@ -70,6 +72,8 @@ class ProductController extends Controller
         [
             'title.required' => 'Judul produk harus diisi.',
         ]);
+
+        // Str::slug($request->title); // membuat slug dari judul produk
 
         $image_name = $product->image; // ambil nama file gambar yang sudah ada
 

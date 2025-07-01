@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Bank extends Model
 {
     protected $fillable = [
+        'name',
+        'account_number',
+        'account_name',
         'image',
-        'title',
-        'slug', // slug merupakan versi URL dari judul produk
     ];
 }

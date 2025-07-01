@@ -54,6 +54,9 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item  ">
+                        <a href="{{ route('backend.bank.index') }}" class="submenu-link">Bank</a>
+                    </li>
+                    <li class="submenu-item  ">
                         <a href="{{ route('backend.product.index') }}" class="submenu-link">Product</a>
                     </li>
                 </ul>

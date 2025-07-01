@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('banks', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
-            $table->string('title');
-            $table->string('slug')->unique(); // slug untuk versi URL dari judul produk
+            $table->string('bank_name')->nullable();
+            $table->string('account_number')->nullable();
+            $table->string('account_name')->nullable();
+            $table->string('image')->nullable(); // untuk menyimpan gambar logo bank
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('banks');
     }
 };
