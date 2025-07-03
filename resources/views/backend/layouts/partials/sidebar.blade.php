@@ -59,6 +59,9 @@
                     <li class="submenu-item  ">
                         <a href="{{ route('backend.product.index') }}" class="submenu-link">Product</a>
                     </li>
+                    <li class="submenu-item  ">
+                        <a href="{{ route('backend.topup.index') }}" class="submenu-link">Topup Option</a>
+                    </li>
                 </ul>
             </li>
             <li class="siderbar-item">

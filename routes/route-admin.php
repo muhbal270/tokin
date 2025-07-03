@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Topup;
 use League\Uri\UriTemplate\Template;
 use App\Http\Controllers\Backend\BankController;
+use App\Http\Controllers\Backend\TopupController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\TemplateController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -50,5 +52,21 @@ Route::middleware(['admin'])->group(function () {
 
     Route::delete('/admin/bank/delete/{bank}', [BankController::class, 'destroy'])
         ->name('backend.bank.delete');
+
+    // Route untuk halaman topup
+    Route::get('/admin/topup', [TopupController::class, 'index'])
+        ->name('backend.topup.index');
+
+    Route::get('/admin/topup/create', [TopupController::class, 'create'])
+        ->name('backend.topup.create');
+
+    Route::post('/admin/topup/store', [TopupController::class, 'store'])    
+        ->name('backend.topup.store');
+
+    Route::get('/admin/topup/edit', [TopupController::class, 'edit'])
+        ->name('backend.topup.edit');
+
+    Route::put('/admin/topup/update', [TopupController::class, 'update'])
+        ->name('backend.topup.update');
 
 });
