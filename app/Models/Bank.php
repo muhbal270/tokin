@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bank extends Model
 {
     protected $fillable = [
-        'name',
+        'bank_name',
         'account_number',
         'account_name',
         'image',

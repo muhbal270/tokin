@@ -85,15 +85,28 @@
                                     <h5>Pembayaran</h5>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-lg-4">
-                                            <img src="./assets/ic-bca.webp" alt="" width="50%">
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <h6>Transfer Bank</h6>
-                                            <h4>012456789</h4>
-                                            <h6>a.n Tokin Sentosa</h6>
-                                        </div>
+                                    <label for="bank">Pilih Bank</label>
+                                    <select id="bank" class="form-select" aria-label="Default select example" onchange="tampilkanInfoBank()">
+                                        <option selected disable>-- Pilih Bank --</option>
+                                        @foreach ($bank as $item)
+                                            <option value="{{ $item->id }}" 
+                                                data-bank-name="{{ $item->bank_name }}"
+                                                data-account-number="{{ $item->account_number }}"
+                                                data-account-name="{{ $item->account_name }}"
+                                                data-image="{{ asset('storage/banks/' . $item->image) }}">
+                                                {{ $item->bank_name }} - {{ $item->account_number }} (a.n {{ $item->account_name }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div id='info-bank' class="row d-flex align-items-center">
+                                    <div class="col-lg-4">
+                                        <img id="bank-image" src="" alt="" width="100">
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <h6 >Transfer Bank</h6>
+                                        <h4 id="bank-number">-</h4>
+                                        <h6 id="bank-account">a.n </h6>
                                     </div>
                                 </div>
                             </div>
@@ -105,3 +118,19 @@
         </div>
     </div>
 @endsection
+
+<script>
+function tampilkanInfoBank() {
+    const select = document.getElementById('bank');
+    const selected = select.options[select.selectedIndex];
+
+    const accountNumber = selected.getAttribute('data-account-number');
+    const accountName = selected.getAttribute('data-account-name');
+    const image = selected.getAttribute('data-image');
+
+    document.getElementById('bank-number').innerText = accountNumber;
+    document.getElementById('bank-account').innerText = 'a.n ' + accountName;
+    document.getElementById('bank-image').src = image;
+
+}
+</script>

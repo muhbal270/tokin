@@ -36,10 +36,14 @@
                             <td>{{ $item->bank_name }}</td>
                             <td>{{ $item->account_number }}</td>
                             <td>{{ $item->account_name }}</td>
-                            <td>Loading...</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i> Edit</a>
-                                <form action="" style="display: inline;">
+                                <img src="{{ asset('storage/banks/' . $item->image) }}" alt="{{ $item->bank_name }}" width="80">
+                            </td>
+                            <td>
+                                <a href="{{ route('backend.bank.edit', $item->id) }}" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i> Edit</a>
+                                <form action="{{ route('backend.bank.delete', $item->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
                                     <button onclick="return confirm('Yakin ingin hapus data ini ?')" class="btn btn-sm btn-danger">
                                         <i class="bi bi-trash"></i> Delete
                                     </button>

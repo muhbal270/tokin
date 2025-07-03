@@ -39,7 +39,16 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/bank/create', [BankController::class, 'create'])
         ->name('backend.bank.create');
 
+    Route::get('/admin/bank/edit/{bank}', [BankController::class, 'edit'])
+        ->name('backend.bank.edit');
+
     Route::post('/admin/bank/store', [BankController::class, 'store'])
         ->name('backend.bank.store');
+
+    Route::put('/admin/bank/update/{bank}', [BankController::class, 'update'])
+        ->name('backend.bank.update');
+
+    Route::delete('/admin/bank/delete/{bank}', [BankController::class, 'destroy'])
+        ->name('backend.bank.delete');
 
 });
