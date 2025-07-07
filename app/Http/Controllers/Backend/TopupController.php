@@ -3,26 +3,29 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Topup;
 use Illuminate\Http\Request;
 
 class TopupController extends Controller
 {
     public function index()
     {
-        // Logika untuk menampilkan daftar topup
-        return view('backend.topups.index');
+        // Mengambil semua data topup dari database
+        $topups = Topup::with('product')->orderBy('position')->paginate(10);
+        return view('backend.topups.index' , compact('topups'));
     }
 
     public function create()
     {
-        // Logika untuk menampilkan form tambah topup
-        return view('backend.topups.create');
+        $products = Product::all();
+        return view('backend.topups.create', compact('products'));
     }
 
-    public function edit()
+    public function edit(Topup $topup)
     {
-        // Logika untuk menampilkan form edit topup
-        return view('backend.topups.edit');
+        $products = Product::all();
+        return view('backend.topups.edit',compact('products', 'topup'));
     }
 
     public function store(Request $request)
@@ -39,9 +42,26 @@ class TopupController extends Controller
             'jumlah.required' => 'Jumlah topup harus diisi.',
             'price.required' => 'Harga topup harus diisi.',
         ]);
+
+        Topup::create([
+            'product_id' => $request->product_id,
+            'title' => $request->title,
+            'jumlah' => $request->jumlah,
+            'price' => $request->price,
+            'position' => $request->position,
+        ]);
+
+        // menampilkan pesan sukses
+        if ($request) {
+            toastr()->success('Produk berhasil ditambahkan!');
+            return redirect()->route('backend.topup.index');
+        } else {
+            toastr()->error('Gagal menambahkan produk!');
+            return redirect()->back();
+        }
     }
 
-    public function update(Request $request, )
+    public function update(Request $request, Topup $topup)
     {
         $request->validate([
             'product_id' => 'required|exists:products,id',
@@ -55,6 +75,37 @@ class TopupController extends Controller
             'jumlah.required' => 'Jumlah topup harus diisi.',
             'price.required' => 'Harga topup harus diisi.',
         ]);
+
+        $updated = $topup->update([
+            'product_id' => $request->product_id,
+            'title' => $request->title,
+            'jumlah' => $request->jumlah,
+            'price' => $request->price,
+            'position' => $request->position,
+        ]);
+
+        // menampilkan pesan sukses
+        if ($updated) {
+            toastr()->success('Topup berhasil diperbarui!');
+            return redirect()->route('backend.topup.index');
+        } else {
+            toastr()->error('Gagal memperbarui topup!');
+            return redirect()->back();
+        }
+    }
+
+    public function destroy(Topup $topup)
+    {
+        $topup->delete();
+
+        // menampilkan pesan sukses
+        if ($topup) {
+            toastr()->success('Topup berhasil dihapus!');
+            return redirect()->route('backend.topup.index');
+        } else {
+            toastr()->error('Gagal menghapus topup!');
+            return redirect()->back();
+        }
     }
 
 }

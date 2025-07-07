@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\OrderController;
 use App\Models\Topup;
 use League\Uri\UriTemplate\Template;
 use App\Http\Controllers\Backend\BankController;
@@ -63,10 +64,17 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admin/topup/store', [TopupController::class, 'store'])    
         ->name('backend.topup.store');
 
-    Route::get('/admin/topup/edit', [TopupController::class, 'edit'])
+    Route::get('/admin/topup/edit/{topup}', [TopupController::class, 'edit'])
         ->name('backend.topup.edit');
 
-    Route::put('/admin/topup/update', [TopupController::class, 'update'])
+    Route::put('/admin/topup/update/{topup}', [TopupController::class, 'update'])
         ->name('backend.topup.update');
+
+    Route::delete('/admin/topup/delete/{topup}', [TopupController::class, 'destroy'])
+        ->name('backend.topup.delete');
+
+    // Route untuk order
+    Route::get('/admin/order', [OrderController::class, 'index'])
+        ->name('backend.order.index');
 
 });

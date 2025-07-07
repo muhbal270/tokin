@@ -18,6 +18,9 @@ Route::get('/product', [GameController::class, 'index'])
 Route::get('/order', [OrderController::class, 'index'])
     ->name('frontend.orders.index');
 
+Route::post('/order/checkout/{slug}', [OrderController::class, 'store'])
+    ->name('frontend.orders.store');
+
 // transactions route
 Route::get('/transaksi', [TransactionController::class, 'index'])
     ->name('frontend.transactions.index');
@@ -29,4 +32,6 @@ Route::get('/payment', [PaymentController::class, 'index'])
 // success route
 Route::get('/sukses', [SuccessController::class, 'index'])
     ->name('frontend.success.index');
+
+
 });

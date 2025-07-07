@@ -11,7 +11,8 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form action="{{ route('backend.topup.update') }}" method="POST" class="form form-vertical">
+                            <form action="{{ route('backend.topup.update', $topup->id) }}" method="POST"
+                                class="form form-vertical">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-body">
@@ -19,9 +20,14 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Pilih Game</label>
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-select" name="product_id" id="product_id" aria-label="Default select example">
                                                     <option selected disabled>-- Pilih Game --</option>
-                                                    <option value="1">One</option>
+                                                    @foreach ($products as $item)
+                                                        <option value="{{ $item->id }}" 
+                                                            {{ old('product_id', $topup->product_id) == $item->id ? 'selected' : ''}}>
+                                                            {{ $item->title }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -29,7 +35,7 @@
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Title</label>
                                                 <input type="text" id="title" class="form-control @error('title') is-invalid
-                                                @enderror" name="title" placeholder="Contoh : 💎 100 Diamonds">
+                                                @enderror" name="title" value="{{  old('title', $topup->title) }}">
                                                 @error('title')
                                                     <div class="text-danger text-start">
                                                         <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
@@ -41,7 +47,7 @@
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Jumlah</label>
                                                 <input type="number" id="jumlah" class="form-control @error('jumlah') is-invalid
-                                                @enderror" name="jumlah" placeholder="Contoh : 100 ">
+                                                @enderror" name="jumlah" value="{{  old('jumlah', $topup->jumlah) }}">
                                                 @error('jumlah')
                                                     <div class="text-danger text-start">
                                                         <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
@@ -53,7 +59,7 @@
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Price</label>
                                                 <input type="number" id="price" class="form-control @error('price') is-invalid
-                                                @enderror" name="price" placeholder="Contoh : 50000 ">
+                                                @enderror" name="price" value="{{  old('price', $topup->price) }}">
                                                 @error('price')
                                                     <div class="text-danger text-start">
                                                         <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}
@@ -65,7 +71,7 @@
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Position</label>
                                                 <input type="number" id="position" class="form-control @error('position') is-invalid
-                                                @enderror" name="position" placeholder="Contoh : 1">
+                                                @enderror" name="position" value="{{  old('position', $topup->position) }}">
                                                 @error('position')
                                                     <div class="text-danger text-start">
                                                         <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}

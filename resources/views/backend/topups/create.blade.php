@@ -13,14 +13,19 @@
                         <div class="card-body">
                             <form action="{{ route('backend.topup.store') }}" method="POST" class="form form-vertical">
                                 @csrf
+                                {{-- <pre>{{ dd($products) }}</pre> --}}
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Pilih Game</label>
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-select" name="product_id" aria-label="Default select example">
                                                     <option selected disabled>-- Pilih Game --</option>
-                                                    <option value="1">One</option>
+                                                    @foreach ($products as $item)
+                                                        <option value="{{ $item->id }}" {{ old('product_id') == $item->id ? 'selected' : ''}}>
+                                                            {{ $item->title }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>

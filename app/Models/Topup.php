@@ -13,4 +13,9 @@ class Topup extends Model
         'price',
         'position'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

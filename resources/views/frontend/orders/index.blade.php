@@ -9,7 +9,7 @@
             </div>
             <div class="row d-flex align-items-center">
                 <div class="col-lg-4">
-                    <h1>Mobile Legends</h1>
+                    <h1>{{ $product->title }}</h1>
                 </div>
                 <div class="col-lg-8 d-none d-lg-block">
                     <hr class="text-light">
@@ -24,16 +24,17 @@
                         <div class="card-body">
                             <ol>
                                 <li>Masukkan User ID dan Zone ID, Contoh: 1234567 (1234)</li>
-                                <li>Pilih jumlah Diamond yang diinginkan</li>
+                                <li>Pilih jumlah Topup yang diinginkan</li>
                                 <li>Upload Bukti & Selesaikan pembayaran</li>
-                                <li>Diamond akan langsung ditambahkan ke akun Mobile Legends Anda</li>
+                                <li>Diamond akan langsung ditambahkan ke akun {{ $product->title }} Anda</li>
                             </ol>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <!-- pemesanan -->
-                    <form action="./payment.html">
+                    <form action="{{ route('frontend.orders.store', $product->slug) }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="card text-light mt-3 mb-3">
                                 <div class="card-header">
@@ -42,9 +43,11 @@
                                 <div class="card-body">
                                     <div class="input-group">
                                         <span class="input-group-text">User ID & Zone ID</span>
-                                        <input type="text" aria-label="First name" class="form-control"
+                                        <input type="text" aria-label="First name" name="game_user_id" class="form-control @error('game_user_id') is-invalid
+                                        @enderror"
                                             placeholder="Masukkan User ID">
-                                        <input type="text" aria-label="Last name" class="form-control"
+                                        <input type="text" aria-label="Last name" name="zone_id" class="form-control @error('zone_id') is-invalid
+                                        @enderror"
                                             placeholder="Masukkan Zone ID">
                                     </div>
                                 </div>
@@ -57,24 +60,19 @@
                                 </div>
                                 <div class="card-body text-light">
                                     <div class="row">
+                                        @forelse ($product->topupOptions->sortBy('position') as $item)
                                         <div class="col-lg-4">
-                                            <input type="radio" class="btn-check" name="options-base" id="option5"
-                                                autocomplete="off" checked>
-                                            <label class="btn" for="option5">💎 50 Diamonds
-                                                <br><small>Rp.15.000</small></label>
+                                            <input type="radio" class="btn-check" name="jumlah" id="option{{ $item->id }}" value="{{ $item->id }}"
+                                            {{ $loop->first ? 'checked' : '' }}>
+                                            <label class="btn" for="option{{ $item->id }}">
+                                                {{ $item->title }}<br>
+                                                <small>Rp.{{ number_format($item->price, 0, ',', '.') }}</small></label>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <input type="radio" class="btn-check" name="options-base" id="option6"
-                                                autocomplete="off">
-                                            <label class="btn" for="option6">💎 100 Diamonds <br>
-                                                <small>Rp.50.000</small></label>
+                                        @empty
+                                        <div class="col-12">
+                                            <p class="text-light">Belum ada pilihan top up untuk game ini.</p>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <input type="radio" class="btn-check" name="options-base" id="option8"
-                                                autocomplete="off">
-                                            <label class="btn" for="option8">💎 500 Diamonds <br>
-                                                <small>Rp.75.000</small></label>
-                                        </div>
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +84,7 @@
                                 </div>
                                 <div class="card-body">
                                     <label for="bank">Pilih Bank</label>
-                                    <select id="bank" class="form-select" aria-label="Default select example" onchange="tampilkanInfoBank()">
+                                    <select id="bank" name="bank_id" class="form-select" aria-label="Default select example" onchange="tampilkanInfoBank()">
                                         <option selected disable>-- Pilih Bank --</option>
                                         @foreach ($bank as $item)
                                             <option value="{{ $item->id }}" 
