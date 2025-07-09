@@ -4,17 +4,17 @@ namespace App\Mail;
 
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\SerializesModels;
 
-class Invoice extends Mailable
+class TransactionVerifiedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public Order $order;
+    public $order;
 
     /**
      * Create a new message instance.
@@ -30,7 +30,7 @@ class Invoice extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Invoice Pemesenan - Tokin Games',
+            subject: 'Transaksi Anda Telah Diverifikasi',
         );
     }
 
@@ -40,10 +40,7 @@ class Invoice extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.invoice',
-            with: [
-                'order' => $this->order,
-            ],
+            view: 'emails.verified',
         );
     }
 

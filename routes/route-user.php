@@ -33,5 +33,11 @@ Route::get('/payment', [PaymentController::class, 'index'])
 Route::get('/sukses', [SuccessController::class, 'index'])
     ->name('frontend.success.index');
 
+// Route untuk mengunggah bukti pembayaran
+Route::get('/payment/upload/{order}', [TransactionController::class, 'showUploadForm'])
+    ->name('frontend.transactions.upload.form');
 
+// Route untuk mengunggah bukti pembayaran
+Route::post('/payment/upload/{order}', [TransactionController::class, 'uploadPaymentProof'])
+    ->name('frontend.transactions.upload.proof');
 });

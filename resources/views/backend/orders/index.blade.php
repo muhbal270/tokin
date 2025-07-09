@@ -49,20 +49,27 @@
                                             </span>
                                         </td>
                                         <td>
-                                            {{-- @if 
-                                                <a href="">
-                                                    <img src="" alt="">
-                                                </a>
-                                                @else --}}
-                                                <span>Belum Upload</span>
-                                            {{-- @endif --}}
+                                        @if ($item->payment_proof)
+                                            <a href="{{ asset('storage/' . $item->payment_proof) }}" target="_blank">
+                                                <img src="{{ asset('storage/' . $item->payment_proof) }}" alt="Bukti Pembayaran" width="80" class="img-thumbnail">
+                                            </a>
+                                        @else
+                                            <span class="text-muted">Belum upload</span>
+                                        @endif
                                         </td>
                                         <td>
-                                            <form action="" style="display: inline;">
+                                            @if ($item->status === 'paid')
+                                            <form action="{{ route('backend.order.verify', $item->id) }}" method="POST" style="display: inline;"
+                                                onsubmit="return confirm('Yakin ingin verifikasi transaksi ini !!!')">
+                                                @csrf
+                                                @method('PUT')
                                                 <button type="submit" class="btn btn-sm btn-success">
                                                     <i class="bi bi-check-circle"></i> verifikasi
                                                 </button>
                                             </form>
+                                            @else
+                                                <span class="text-muted">---</span>
+                                            @endif
                                         </td>
                                     </tr>
                                 @empty

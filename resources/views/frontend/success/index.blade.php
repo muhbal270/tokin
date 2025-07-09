@@ -18,7 +18,7 @@
             </div>
             <div class="row mt-5">
                 <h5>Transaksi Telah BERHASIL!, Silahkan cek akun pada game secara berkala!</h5>
-                <a href="./game.html" class="btn btn-light mt-3">Top Up Game Lain</a>
+                <a href="{{ route('frontend.products.index') }}" class="btn btn-light mt-3">Top Up Game Lain</a>
             </div>
         </div>
     </div>

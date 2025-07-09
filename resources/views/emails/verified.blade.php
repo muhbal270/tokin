@@ -2,14 +2,13 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Invoice Pemesanan - Tokin Games</title>
+    <title>Transaksi Berhasil - Tokin Games</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f6f8;
             color: #333;
             padding: 20px;
-            margin: 0;
         }
 
         .container {
@@ -17,34 +16,20 @@
             padding: 25px;
             border-radius: 8px;
             max-width: 600px;
-            margin: auto;
+            margin: 0 auto;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         h2 {
-            color: #007bff;
-            font-size: 22px;
-            margin-bottom: 15px;
+            color: #28a745;
         }
 
         ul {
             padding-left: 20px;
-            margin-bottom: 20px;
         }
 
         li {
             margin-bottom: 6px;
-        }
-
-        a.button {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 24px;
-            background-color: #28a745;
-            color: #fff !important;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 14px;
         }
 
         .footer {
@@ -53,20 +38,15 @@
             color: #888;
             text-align: center;
         }
-
-        p {
-            font-size: 15px;
-            line-height: 1.5;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>🧾 Invoice Pemesanan - Tokin Games</h2>
+        <h2>Transaksi Berhasil</h2>
 
         <p>Halo <strong>{{ $order->user->name }}</strong>,</p>
 
-        <p>Terima kasih telah melakukan pemesanan top-up game <strong>{{ $order->product->title }}</strong>. Berikut adalah detail transaksi Anda:</p>
+        <p>Pesanan top-up Anda untuk game <strong>{{ $order->product->title }}</strong> telah berhasil <strong>diverifikasi</strong> oleh admin.</p>
 
         <ul>
             <li><strong>Invoice:</strong> {{ $order->invoice }}</li>
@@ -75,18 +55,7 @@
             <li><strong>Status:</strong> {{ ucfirst($order->status) }}</li>
         </ul>
 
-        <p>Silakan transfer ke rekening berikut:</p>
-        <ul>
-            <li><strong>Bank:</strong> {{ $order->bank->bank_name }}</li>
-            <li><strong>No. Rekening:</strong> {{ $order->bank->account_number }}</li>
-            <li><strong>Atas Nama:</strong> {{ $order->bank->account_name }}</li>
-        </ul>
-
-        <p>Setelah transfer, klik tombol di bawah ini untuk mengunggah bukti pembayaran Anda:</p>
-
-        <a href="{{ route('frontend.transactions.upload.form', $order->id) }}" class="button">
-            Upload Bukti Pembayaran
-        </a>
+        <p>Jika Anda belum menerima top-up, silakan hubungi tim support kami.</p>
 
         <p>Terima kasih telah menggunakan layanan <strong>Tokin Games</strong>! 🎮</p>
 

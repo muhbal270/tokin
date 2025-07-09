@@ -54,7 +54,7 @@
 
                             <td>
                                 @if ($item->status === 'pending' && !$item->payment_proof)
-                                    <a href=""
+                                    <a href="{{ route('frontend.transactions.upload.form', $item->id) }}"
                                         class="btn btn-warning btn-sm">
                                         Kirim
                                     </a>

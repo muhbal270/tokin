@@ -77,4 +77,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/order', [OrderController::class, 'index'])
         ->name('backend.order.index');
 
+    Route::put('/admin/order/verify/{order}', [OrderController::class, 'verify'])
+        ->name('backend.order.verify');
+
 });

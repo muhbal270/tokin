@@ -13,10 +13,14 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <form action="./success.html">
+                <form action="{{ route('frontend.transactions.upload.proof', $order->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div>
-                        <label for="formFileLg" class="form-label">Silahkan Upload bukti pembayaran anda 1x24 jam</label>
-                        <input class="form-control form-control-lg" id="formFileLg" type="file">
+                        <label for="formFileLg" class="form-label">
+                            Silahkan Upload bukti pembayaran anda 1x24 jam
+                        </label>
+                        <input class="form-control form-control-lg" id="payment_proof" type="file" name="payment_proof" required>
+
                     </div>
                     <button type="submit" class="btn btn-light w-100 mt-3">Konfirmasi</button>
                 </form>
